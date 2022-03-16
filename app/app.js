@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 //모듈
 const express = require("express");
 const app = express();
@@ -12,6 +12,7 @@ app.set("views", "./src/views");
 app.set("view engine", "ejs");
 
 //use : 미들 웨어를 등록해줌
+app.use(express.static(`${__dirname}/src/public`));
 app.use("/", home);
 
 module.exports = app;
