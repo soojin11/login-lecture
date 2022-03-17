@@ -8,9 +8,9 @@ class User {
     constructor(body) {
         this.body = body;
     }
-    login() {
+    async login() {
         const client = this.body;
-        const { id, psword } = UserStorage.getUserInfo(client.id);
+        const { id, psword } = await UserStorage.getUserInfo(client.id);
         if (id) {
             //storage에서 가져온 정보 === client가 작성한 정보면
             if (id === client.id && psword === client.psword) {

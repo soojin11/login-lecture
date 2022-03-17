@@ -20,9 +20,10 @@ const output = {
 
 //여기서 사용자 정보를 가지고 로그인
 const process = {
-    login: (req, res) => {
+    //login 도 비동기
+    login: async(req, res) => {
         const user = new User(req.body);
-        const response = user.login();
+        const response = await user.login();
         console.log(response);
         //client한테 주는 것
         return res.json(response);
