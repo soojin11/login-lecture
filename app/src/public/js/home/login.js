@@ -1,12 +1,14 @@
 "use strict";
 
+//HTML 과 연동 돼 있는 파일
+
 const id = document.querySelector("#id"),
     psword = document.querySelector("#psword"),
     loginBtn = document.querySelector("button")
 
 loginBtn.addEventListener("click", login);
 
-function login(){
+function login() {
     //전달 할 데이터
     const req = {
         id: id.value,
@@ -21,11 +23,11 @@ function login(){
     // post라는 method로 받을 수 있는 경로가 있어야 함(index.js)
     fetch("/login", {
         method: "POST",
-        headers:{
+        headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(req)
-    })
+        body: JSON.stringify(req),
+    }).then((res) => res.json()).then(console.log);
 
 
 }
