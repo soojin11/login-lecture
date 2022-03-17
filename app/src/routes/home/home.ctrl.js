@@ -26,6 +26,13 @@ const process = {
         console.log(response);
         //client한테 주는 것
         return res.json(response);
+    },
+    register: (req, res) => {
+        const user = new User(req.body);
+        const response = user.login();
+        console.log(response);
+        //client한테 주는 것
+        return res.json(response);
     }
 }
 

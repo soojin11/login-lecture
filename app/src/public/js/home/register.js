@@ -10,11 +10,16 @@ registerBtn.addEventListener("click", register);
 
 function register() {
     //전달 할 데이터
+    if (!id.value) {
+        return alert("아이디 입력해주세요")
+    }
+    if (psword.value !== confirmPsword.value) {
+        return alert("비밀번호 일치하지 않습니다");
+    }
     const req = {
         id: id.value,
         name: name.value,
         psword: psword.value,
-        confirmPsword: confirmPsword.value,
     }
 
     // fetch로 전달
