@@ -28,9 +28,9 @@ const process = {
         //client한테 주는 것
         return res.json(response);
     },
-    register: (req, res) => {
+    register: async(req, res) => {
         const user = new User(req.body);
-        const response = user.login();
+        const response = await user.register();
         console.log(response);
         //client한테 주는 것
         return res.json(response);
