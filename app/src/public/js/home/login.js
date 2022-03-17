@@ -1,7 +1,7 @@
 "use strict";
 
 //HTML 과 연동 돼 있는 파일
-
+//login.ejs
 const id = document.querySelector("#id"),
     psword = document.querySelector("#psword"),
     loginBtn = document.querySelector("button")
