@@ -1,41 +1,38 @@
 "use strict"
 
-
+const UserStorage = require("../../models/UserStorage")
 
 const output = {
- home : (req, res)=>{
-    res.render("home/index");
-},
+    home: (req, res) => {
+        res.render("home/index");
+    },
 
- login : (req, res) => {
-    res.render("home/login");
-}
+    login: (req, res) => {
+        res.render("home/login");
+    }
 }
 
-//사용자 정보
-const users = {
-    id:["a" ,"b", "c"],
-    psword:["aa", "bb", "cc"]
-};
+
 
 //여기서 사용자 정보를 가지고 로그인
 const process = {
-    login: (req, res) =>{
+    login: (req, res) => {
         const id = req.body.id,
             psword = req.body.psword;
-
+        // console.log(UserStorage.getUsers());
+        const users = UserStorage.getUsers("id", "psword");
+        const response = {};
         if (users.id.includes(id)) {
             const idx = users.id.indexOf(id);
             if (users.psword[idx] === psword) {
-                return res.json({
-                    success: true,
-                });
+                response.success = true;
+                return res.json(response);
             }
         }
-        return res.json({
-            success: false,
-            msg: "로그인 실패",
-        });
+
+        response.success = false;
+        response.msg = "로그인에 실패"
+        return res.json(response);
     }
 }
 
