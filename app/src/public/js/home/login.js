@@ -9,6 +9,12 @@ const id = document.querySelector("#id"),
 loginBtn.addEventListener("click", login);
 
 function login() {
+    if (!id.value)
+        return alert("아이디 입력해주세요");
+
+    if (!psword.value)
+        return alert("비밀번호 일치하지 않습니다");
+
     //전달 할 데이터
     const req = {
         id: id.value,
@@ -31,6 +37,7 @@ function login() {
         if (res.success) {
             location.href = "/";
         } else {
+            if (res.err) return alert(res.err);
             alert(res.msg);
         }
     }).catch((err) => {

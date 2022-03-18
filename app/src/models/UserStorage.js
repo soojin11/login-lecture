@@ -45,9 +45,8 @@ class UserStorage {
             db.query(query, [id], (err, data) => {
                 //에러면 reject
                 if (err) reject(`${err}`);
-                console.log(data[0]);
                 //data가 배열로 들어옴
-                resolve(data[0]);
+                else resolve(data[0]);
             });
         });
 
@@ -65,7 +64,7 @@ class UserStorage {
             db.query(query, [userInfo.id, userInfo.name, userInfo.psword], (err) => {
                 //err가 object로 날라가니까 string으로 
                 if (err) reject(`${err}`);
-                resolve({ success: true });
+                else resolve({ success: true });
             });
 
 
